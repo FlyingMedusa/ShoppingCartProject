@@ -11,10 +11,9 @@ class ShoppingCart {
         return this.items.reduce((prev, curr) => prev + curr.price, 0);
     }
 
-    showCart() {
-        this.items
-            .map((product, i) => `${i + 1} - ${product.name} - ${product.price.toFixed(2)}PLN`)
-            .forEach(line => console.log(line));
+    getCartSummary() {
+        return this.items
+            .map((product, i) => `${i + 1} - ${product.name} - ${product.price.toFixed(2)}PLN`);
     }
 
     remove(no) {
