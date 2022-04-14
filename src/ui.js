@@ -1,5 +1,6 @@
 const buyBtns = [...document.querySelectorAll('[data-name]')];
 const cartUl = document.querySelector('.cart-list');
+const buyAllBtn = document.querySelector('.btn-buy-all');
 
 const cart = new ShoppingCart();
 
@@ -10,6 +11,15 @@ const createCartUi = () => {
         const newLi = document.createElement('li');
         newLi.innerText = oneProductInfo;
         cartUl.appendChild(newLi);
+    }
+
+    const cartTotalValue = cart.getTotalValue();
+    buyAllBtn.innerText = `Proceed to payment - ${cartTotalValue.toFixed(2)}PLN`;
+
+    if (cartTotalValue > 0) {
+        buyAllBtn.removeAttribute('disabled');
+    } else {
+        buyAllBtn.setAttribute('disabled', 'true');
     }
 };
 
