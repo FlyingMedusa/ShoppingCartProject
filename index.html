@@ -9,7 +9,7 @@
 <body>
     <section class="products">
         <h1>Our products:</h1>
-        <ul>
+        <ul class="products-list">
             <li>
                 <strong>Cucumbers</strong> - 9.99 PLN/kg <button class="btn-buy-product" data-name="cucumbers" data-price="9.99">Buy!</button>
             </li>
@@ -26,8 +26,25 @@
         <ul class="cart-list"></ul>
         <button class="btn-buy-all" disabled>Proceed to payment</button>
     </section>
+    <section class="admin-add-product">
+        <h1>Add a product [Admin pass required]</h1>
+        <form class="form-add-product">
+            <input 
+                type="text" 
+                name="product-name" 
+                placeholder="Product name" 
+                required>
+            <input 
+                type="float" 
+                name="product-price" 
+                placeholder="Product price" 
+                required>
+            <button type="submit">Add</button>
+        </form>
+    </section>
 
     <script src="src/cart.js"></script>
     <script src="src/ui.js"></script>
+    <script src="src/admin-ui.js"></script>
 </body>
 </html>
