@@ -1,14 +1,16 @@
 class ShoppingCart {
     constructor () {
-        this.items = [];
+        this.items = this.loadFromLocalStorage();
     }
 
     clear() {
         this.items.length = 0;
+        this.saveToLocalStorage();
     }
 
     add(item) {
         this.items.push(item);
+        this.saveToLocalStorage();
     }
 
     getTotalValue() {
@@ -27,6 +29,21 @@ class ShoppingCart {
 
     remove(no) {
         this.items.splice(no - 1, 1);
+        this.saveToLocalStorage();
+    }
+
+    saveToLocalStorage() {
+        localStorage.setItem('cart-items', JSON.stringify(this.items));
+    }
+
+    loadFromLocalStorage() {
+        const itemJSON = localStorage.getItem('cart-items');
+
+        if (itemJSON === null) {
+            return [];
+        } else {
+            return JSON.parse(itemJSON);
+        }
     }
 }
 
